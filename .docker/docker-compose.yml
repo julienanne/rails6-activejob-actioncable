@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  railsappmanyfeatures:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../:/usr/src/my_app
+    depends_on:
+      - db
+      - maildev
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: example
+  maildev:
+    image: maildev/maildev
+    ports:
+      - "1080:80"
+    command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
+volumes:
+  ruby:
+
