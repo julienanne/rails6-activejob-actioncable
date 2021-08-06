@@ -19,4 +19,6 @@ done
 
 # rails new myapp --database=postgresql
 
+# bin/rspec --init
+
 

@@ -1,0 +1,8 @@
+<h1>Welcome Home</h1>
+<% if current_user.nil? %>
+	<%= link_to new_user_session_path, class: 'btn btn-primary' do %>Sign in<% end %>
+<% else %>
+    <p>You are connected with <%= current_user.email %></p>
+	<%= link_to app_dashboard_index_path, class: 'btn btn-primary' do %>Go to App<% end %>
+	<%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
+<% end %>
