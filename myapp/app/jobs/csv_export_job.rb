@@ -1,7 +1,9 @@
 class CsvExportJob < ApplicationJob
   queue_as :default
 
-  def perform(products_db)
+  after_perform :notify
+
+  def perform(current_user_id, products_db)
     products = products_db.map do |p| 
       { name: p.name, price_with_discount: p.price-(p.price*p.percent_discount/100) }
     end    
@@ -19,5 +21,10 @@ class CsvExportJob < ApplicationJob
         raise Exception if product.nil?
       end
     end
+  end
+
+  private
+  def notify
+    puts "notify #{@arguments[0]}"
   end
 end

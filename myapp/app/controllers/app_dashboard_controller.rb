@@ -7,7 +7,7 @@ class AppDashboardController < ApplicationController
   end
 
   def process_data
-    CsvExportJob.perform_later(Product.all.to_a)
+    CsvExportJob.perform_later(current_user.id, Product.all.to_a)
 
     redirect_to({ action: "data" }, notice: "Export processing on data")
   end

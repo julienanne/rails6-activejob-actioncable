@@ -1,6 +1,6 @@
 <h1>Data</h1>
 <div>
-    <p>You are connected with <%= current_user.email %></p>
+    <p>You are connected with <%= current_user.email %> id : <%= current_user.id %></p>
 	<%= link_to app_dashboard_process_data_path, method: :post, class: 'btn btn-primary' do %>Process export<% end %>
 	<%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
 </div>
