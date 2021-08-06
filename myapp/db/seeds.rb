@@ -5,12 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+########### Users #######
 User.create! do |u|
-    u.email     = 'test@test.com'
-    u.password    = 'password'
+  u.email     = 'test@test.com'
+  u.password    = 'password'
 end
 
 User.create! do |u|
-    u.email     = 'test2@test.com'
-    u.password    = 'password2'
+  u.email     = 'test2@test.com'
+  u.password    = 'password2'
+end
+
+
+
+########### Products #######
+20000.times do |i|
+  Product.create(name: "Product #{i}", price: i*10, percent_discount: i*10%99)
 end

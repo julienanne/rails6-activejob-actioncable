@@ -16,4 +16,13 @@ RSpec.describe "AppDashboards", type: :request do
     end
   end
 
+  describe "GET /data" do
+    login_user
+    it "returns http success" do
+      Product.create(name: "Product", price: 10, percent_discount: 10)
+      get "/app_dashboard/data"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
 end

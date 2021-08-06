@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'app_dashboard/index'
+  get 'app_dashboard/data'
   root 'home#index'
   devise_for :users
   
