@@ -4,7 +4,11 @@ class AppDashboardController < ApplicationController
 
   def data
     products_db = Product.all
+  end
+
+  def process_data
     CsvExportJob.perform_later(Product.all.to_a)
-    render json: { message: products_db.length }, status: 200    
+
+    redirect_to({ action: "data" }, notice: "Export processing on data")
   end
 end

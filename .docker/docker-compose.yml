@@ -10,6 +10,7 @@ services:
       - ../:/usr/src/my_app
     depends_on:
       - db
+      - redis
       - maildev
   db:
     image: postgres
@@ -17,6 +18,11 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: example
+  redis:
+    image: "redis:alpine"
+    hostname: redis
+    ports:
+      - "6379:6379"
   maildev:
     image: maildev/maildev
     ports:
